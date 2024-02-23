@@ -46,12 +46,12 @@ class PCDPublisher(Node):
     def timer_callback(self):
         # For visualization purposes, I rotate the point cloud with self.R 
         # to make it spin. 
-        self.points = self.points @ self.R
+        # self.points = self.points @ self.R
         # Here I use the point_cloud() function to convert the numpy array 
         # into a sensor_msgs.PointCloud2 object. The second argument is the 
         # name of the frame the point cloud will be represented in. The default
         # (fixed) frame in RViz is called 'map'
-        self.pcd = point_cloud(self.points, 'map')
+        self.pcd = point_cloud(self.points, 'base')
         # Then I publish the PointCloud2 object 
         self.pcd_publisher.publish(self.pcd)
 
